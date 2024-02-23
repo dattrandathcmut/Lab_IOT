@@ -12,8 +12,8 @@ model = load_model("keras_Model.h5", compile=False)
 class_names = open("labels.txt", "r").readlines()
 
 # CAMERA can be 0 or 1 based on default camera of your computer
-camera = cv2.VideoCapture(0)
-
+camera = cv2.VideoCapture('http://192.168.1.222:4747/video')  # Replace with your camera's IP address (e.g. 'http://
+# camera = cv2.VideoCapture(0)
 def image_detection():
     # Grab the webcamera's image.
     ret, image = camera.read()
