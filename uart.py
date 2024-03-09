@@ -11,11 +11,26 @@ def getPort():
             splitPort = strPort.split(" ")
             commPort = (splitPort[0])
     # return commPort
-    return "COM4"
+    # return "COM4"
+    return "/dev/pts/3"
 
 if getPort() != "None":
    ser = serial.Serial( port=getPort(), baudrate=115200)
    print (ser)
+# import serial.tools.list_ports
+# import serial
+
+# def getPort():
+#     ports = serial.tools.list_ports.comports()
+#     commPort = "None"
+#     for port in ports:
+#         if "USB Serial Device" in port.description:
+#             commPort = port.device
+#     return commPort
+
+# if getPort() != "None":
+#     ser = serial.Serial(port=getPort(), baudrate=115200)
+#     print(ser)
 
 def processData(client,data):
     data = data.replace("!", "")
@@ -41,3 +56,7 @@ def readSerial(client):
                 mess = ""
             else:
                 mess = mess[end+1:]
+def writeSerial(data):
+    ser.write(str(data).encode("UTF-8"))
+    print("Write to serial: " + data)
+

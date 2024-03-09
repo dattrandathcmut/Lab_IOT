@@ -8,7 +8,7 @@ from uart import *
 
 AIO_FEED_ID = ["nutnhan" , "nutnhan2"] # Feed ID
 AIO_USERNAME = "emcutene"
-AIO_KEY = "aio_HlZF86cE5F1ZZ3mNTu5lgSODv5h1"
+AIO_KEY = "aio_eeDD07wO3q3JcK2Lnfel0vmzhRVI"
 
 def connected(client):
     print("Ket noi thanh cong ...")
@@ -24,6 +24,22 @@ def disconnected(client):
 
 def message(client , feed_id , payload):
     print("Nhan du lieu: " + payload + " tu " + feed_id)
+    if feed_id == "nutnhan":
+        print("Xu ly nut nhan 1")
+        if payload == "1":
+            print("Bat den")
+            writeSerial("1")
+        elif payload == "0":
+            print("Tat den")
+            writeSerial("0")
+    elif feed_id == "nutnhan2":
+        print("Xu ly nut nhan 2")
+        if payload == "1":
+            print("Bat may bom")
+            writeSerial("3")
+        elif payload == "0":
+            print("Tat may bom") 
+            writeSerial('4')
 
 client = MQTTClient(AIO_USERNAME , AIO_KEY)
 client.on_connect = connected
