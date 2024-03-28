@@ -1,3 +1,0 @@
-0 Khong deo kinh
-1 co deo kinh
-2 Khong co nguoi
